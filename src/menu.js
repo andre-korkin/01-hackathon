@@ -35,19 +35,19 @@ export class ContextMenu extends Menu {
                 case 'background':
                     module.addEventListener('click', () => {
                         const moduleItem = modules.find(item => item.type === 'background')
-                        console.log(moduleItem.trigger())
+                        moduleItem.trigger()
                     })
                     break
                 case 'click':
                     module.addEventListener('click', () => {
                         const moduleItem = modules.find(item => item.type === 'click')
-                        console.log(moduleItem.trigger())
+                        moduleItem.trigger()
                     })
                     break
                 case 'shape':
                     module.addEventListener('click', () => {
                         const moduleItem = modules.find(item => item.type === 'shape')
-                        console.log(moduleItem.trigger())
+                        moduleItem.trigger()
                     })
                     break
             }
