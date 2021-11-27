@@ -1,4 +1,5 @@
 import {Menu} from './core/menu'
+import { hexToRgb } from './utils'
 
 // -------------- импортируем модули списков меню ---------
 import {SettingsModule} from './modules/settings.module'
@@ -10,8 +11,12 @@ import {BackgroundModule} from './modules/background.module'
 export class ContextMenu extends Menu {
     constructor(selector) {
         super(selector)
+
+        const settings_module = new SettingsModule('settings', 'Настройка меню')
+        this.settings = settings_module.model  // импортируем стили для меню из модуля настройки меню
+
         this.items = [  // создаем массив пунктов меню
-            new SettingsModule('settings', 'Настройка меню'),
+            settings_module,
             new ShapeModule('shape', 'Случайная фигура'),
             new ClicksModule('clicks', 'Подсчет кликов'),
             new BackgroundModule('background', 'Случайный фон')
@@ -34,6 +39,15 @@ export class ContextMenu extends Menu {
 
         this.el.style.top = y + 'px'
         this.el.style.left = x + 'px'
+
+        let opacity = 1 - this.settings.opacity / 100  // блок стилизации
+        let {r, g, b} = hexToRgb(this.settings.background)
+        this.el.style.background = `rgba(${r}, ${g}, ${b}, ${opacity})`
+
+        this.el.style.color = this.settings.color
+        this.el.style.borderRadius = this.settings.radius + 'px'
+        this.el.style.boxShadow = `2px 3px 3px ${this.settings.shadow}`
+
         this.el.classList.add('open')
     }
 

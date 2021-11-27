@@ -18,6 +18,7 @@ body {
     position: fixed;
     z-index: 1000;
     width: 200px;
+    color: #eee;
     background: rgba(0,0,0,0.5);
     border-radius: 5px;
     display: none;
@@ -33,7 +34,6 @@ body {
     padding: 8px 10px;
     font-size: 1rem;
     font-weight: 100;
-    color: #eee;
     cursor: pointer;
     transition: background-color .2s ease-in;
     border-radius: inherit;
@@ -41,4 +41,75 @@ body {
 
 .menu .menu-item:hover {
     background: rgba(0,0,0,0.2);
+}
+
+/* ---------- Settings module ---------- */
+
+.settings_panel {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: absolute;
+    top: -80px;
+    left: 0;
+    width: 100%;
+    background: rgb(130, 195, 238);
+    border-bottom: solid 1px rgb(39, 130, 190);
+    box-shadow: 0 2px 3px #444;
+    transition: .3s linear;
+}
+
+.settings_panel.show {
+    top: 0;
+}
+
+.settings_panel div {
+    margin: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.settings_panel div input {
+    margin: 10px;
+}
+
+.model_block {
+    position: fixed;
+    z-index: 100;
+    display: none;
+}
+
+.model_block.show {
+    display: block;
+}
+
+#close_button {
+    position: relative;
+    top: 470px;
+    left: 140px;
+    width: 50px;
+    height: 50px;
+    margin: 0 auto;
+    background: rgb(130, 195, 238);
+    border-radius: 50%;
+    box-shadow: 2px 2px 3px #444;
+    cursor: pointer;
+    display: none;
+}
+
+#ld {
+    position: relative;
+    top: 25px;
+    border-top: solid 1px #fff;
+    transform: rotate(45deg);
+}
+#rd {
+    position: relative;
+    top: 25px;
+    border-top: solid 1px #fff;
+    transform: rotate(-45deg);
+}
+
+#close_button.show {
+    display: block;
 }
