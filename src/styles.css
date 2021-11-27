@@ -72,3 +72,13 @@ body {
 .settings_panel div input {
     margin: 10px;
 }
+
+.model_block {
+    position: fixed;
+    z-index: 100;
+    display: none;
+}
+
+.model_block.show {
+    display: block;
+}
