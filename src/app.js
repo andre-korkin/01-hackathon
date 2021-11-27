@@ -1,11 +1,28 @@
 import './styles.css'
 import {ContextMenu} from './menu'
 
+// -------------- импортируем модули списков меню ---------
+import {SettingsModule} from './modules/settings.module'
+import {ShapeModule} from './modules/shape.module'
+import {ClicksModule} from './modules/clicks.module'
+import {BackgroundModule} from './modules/background.module'
+import {SoundsModule} from './modules/sounds.module'
 
-const context_menu = new ContextMenu('#menu')
+const modules = [  // создаем массив пунктов меню
+    new ShapeModule('shape', 'Случайная фигура'),
+    new ClicksModule('clicks', 'Подсчет кликов'),
+    new SoundsModule('sounds', 'Случайный звук'),
+    new BackgroundModule('background', 'Случайный фон'),
+    new SettingsModule('settings', 'Настройка меню')
+]
 
-const $body = document.querySelector('body')
-$body.addEventListener('contextmenu', (event) => {
+const contextMenu = new ContextMenu('#menu', modules)
+
+contextMenu.add()
+contextMenu.call()
+
+document.body.addEventListener('contextmenu', (event) => {
     event.preventDefault()
-    context_menu.items.length > 0 ? context_menu.open(event) : false  // отрисовываем меню только тогда, когда массив пунктов меню не пустой
+    const {clientX, clientY} = event
+    contextMenu.open(clientX, clientY)
 })

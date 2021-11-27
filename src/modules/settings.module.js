@@ -1,7 +1,6 @@
 import {Module} from '../core/module'
 import { hexToRgb } from '../utils'
 
-
 export class SettingsModule extends Module {
     constructor(type, text) {
         super(type, text)

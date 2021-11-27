@@ -38,7 +38,9 @@ body {
     transition: background-color .2s ease-in;
     border-radius: inherit;
 }
-
+.menu .menu-item:last-child{
+    border-top: 1px solid rgba(255,255,255, .1) ;
+}
 .menu .menu-item:hover {
     background: rgba(0,0,0,0.2);
 }
