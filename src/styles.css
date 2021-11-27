@@ -18,6 +18,7 @@ body {
     position: fixed;
     z-index: 1000;
     width: 200px;
+    color: #eee;
     background: rgba(0,0,0,0.5);
     border-radius: 5px;
     display: none;
@@ -33,7 +34,6 @@ body {
     padding: 8px 10px;
     font-size: 1rem;
     font-weight: 100;
-    color: #eee;
     cursor: pointer;
     transition: background-color .2s ease-in;
     border-radius: inherit;

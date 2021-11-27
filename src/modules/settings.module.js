@@ -1,4 +1,5 @@
 import {Module} from '../core/module'
+import { hexToRgb } from '../utils'
 
 
 export class SettingsModule extends Module {
@@ -7,7 +8,7 @@ export class SettingsModule extends Module {
 
         this.model = {  // свойства модели меню
             background: '#000000',
-            color: '#ffffff',
+            color: '#eeeeee',
             opacity: '50',
             radius: '5',
             shadow: '#444444'
@@ -21,6 +22,10 @@ export class SettingsModule extends Module {
                 const $inp_background = document.createElement('input')
                 $inp_background.type = 'color'
                 $inp_background.value = this.model.background
+                $inp_background.addEventListener('input', () => {
+                    this.model.background = $inp_background.value
+                    this.render()
+                })
             $background_block.append($inp_background)
 
             const $color_block = document.createElement('div')
@@ -28,6 +33,10 @@ export class SettingsModule extends Module {
                 const $inp_color = document.createElement('input')
                 $inp_color.type = 'color'
                 $inp_color.value = this.model.color
+                $inp_color.addEventListener('input', () => {
+                    this.model.color = $inp_color.value
+                    this.render()
+                })
             $color_block.append($inp_color)
 
             const $opacity_block = document.createElement('div')
@@ -38,6 +47,10 @@ export class SettingsModule extends Module {
                 $inp_opacity.max = '100'
                 $inp_opacity.step = '10'
                 $inp_opacity.value = this.model.opacity
+                $inp_opacity.addEventListener('input', () => {
+                    this.model.opacity = $inp_opacity.value
+                    this.render()
+                })
             $opacity_block.append($inp_opacity)
 
             const $radius_block = document.createElement('div')
@@ -45,8 +58,12 @@ export class SettingsModule extends Module {
                 const $inp_radius = document.createElement('input')
                 $inp_radius.type = 'number'
                 $inp_radius.min = '0'
-                $inp_radius.max = '20'
+                $inp_radius.max = '10'
                 $inp_radius.value = this.model.radius
+                $inp_radius.addEventListener('input', () => {
+                    this.model.radius = $inp_radius.value
+                    this.render()
+                })
             $radius_block.append($inp_radius)
 
             const $shadow_block = document.createElement('div')
@@ -54,6 +71,10 @@ export class SettingsModule extends Module {
                 const $inp_shadow = document.createElement('input')
                 $inp_shadow.type = 'color'
                 $inp_shadow.value = this.model.shadow
+                $inp_shadow.addEventListener('input', () => {
+                    this.model.shadow = $inp_shadow.value
+                    this.render()
+                })
             $shadow_block.append($inp_shadow)
 
         this.el.append($background_block, $color_block, $opacity_block, $radius_block, $shadow_block)
@@ -64,11 +85,9 @@ export class SettingsModule extends Module {
         this.modelblock = document.createElement('div')
         this.modelblock.className = 'model_block'
             const win_width = document.documentElement.clientWidth  // ширина документа
-            const win_height = document.documentElement.clientHeight  // высота документа
             const menu_width = 200  // ширина меню
-            const menu_height = 120  // высота меню
-            this.modelblock.style.left = (win_width - menu_width) / 2 + 'px'  // выравниваем модель меню
-            this.modelblock.style.top = (win_height - menu_height) / 2 + 'px'  // по центру окна
+            this.modelblock.style.left = (win_width - menu_width) / 2 + 'px'  // выравниваем модель меню по горизонтали
+            this.modelblock.style.top = '300px'
         document.body.append(this.modelblock)
     }
 
@@ -84,6 +103,15 @@ export class SettingsModule extends Module {
         this.modelblock.innerHTML = ''
         const $menu = document.createElement('div')
         $menu.className = 'menu'
+
+        let opacity = 1 - this.model.opacity / 100
+        let {r, g, b} = hexToRgb(this.model.background)
+        $menu.style.background = `rgba(${r}, ${g}, ${b}, ${opacity})`
+
+        $menu.style.color = this.model.color
+        $menu.style.borderRadius = this.model.radius + 'px'
+        $menu.style.boxShadow = `2px 3px 3px ${this.model.shadow}`
+
         $menu.classList.add('open')
             const items = ['Background', 'Color', 'Opacity', 'Radius', 'Shadow']
             items.forEach(item => {
