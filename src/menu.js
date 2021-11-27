@@ -6,6 +6,7 @@ import {SettingsModule} from './modules/settings.module'
 import {ShapeModule} from './modules/shape.module'
 import {ClicksModule} from './modules/clicks.module'
 import {BackgroundModule} from './modules/background.module'
+import {SoundsModule} from './modules/sounds.module'
 
 
 export class ContextMenu extends Menu {
@@ -19,6 +20,7 @@ export class ContextMenu extends Menu {
             settings_module,
             new ShapeModule('shape', 'Случайная фигура'),
             new ClicksModule('clicks', 'Подсчет кликов'),
+            new SoundsModule('sounds', 'Случайный звук'),
             new BackgroundModule('background', 'Случайный фон')
         ]
 
