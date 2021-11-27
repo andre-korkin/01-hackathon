@@ -1,9 +1,5 @@
 import './styles.css'
 import {ContextMenu} from './menu'
-// import {SettingsModule} from './modules/settings.module'
-// import {ShapeModule} from './modules/shape.module'
-// import {ClicksModule} from './modules/clicks.module'
-// import {BackgroundModule} from './modules/background.module'
 
 
 const context_menu = new ContextMenu('#menu')
