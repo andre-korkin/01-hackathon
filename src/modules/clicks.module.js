@@ -61,8 +61,11 @@ export class ClicksModule extends Module {
         document.querySelector(`.${styles.clicks__counter}`).remove()
         document.body.classList.toggle(`${styles.unselectable}`)
         this.timer = null
+            setTimeout(()=>{
+                document.querySelector(`.${styles.clicks__container}`).remove()
+            }, 3000)
     }
-
+    /*TODO После выполнения модуля отключается правый клик, не сомг найти причину, нужно спросить Антона*/
     trigger() {
         document.body.innerHTML = ClicksModule.getHTML()
         this.start()
