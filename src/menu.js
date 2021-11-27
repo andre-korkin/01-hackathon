@@ -21,6 +21,12 @@ export class ContextMenu extends Menu {
         arr.forEach(item => {
             this.items.push(item)
             this.el.innerHTML += item.toHTML()
+        })
+        this.clicker()
+    }
+
+    clicker() {
+        this.items.forEach(item => {
             this.el.querySelector(`[data-type="${item.type}"]`).addEventListener('click', () => {
                 this.close()
                 item.trigger()
