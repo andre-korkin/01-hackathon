@@ -78,7 +78,19 @@ export class SettingsModule extends Module {
             $shadow_block.append($inp_shadow)
 
         this.el.append($background_block, $color_block, $opacity_block, $radius_block, $shadow_block)
-        document.body.append(this.el)
+
+        // кнопка закрыть
+        this.btnclose = document.createElement('div')
+        this.btnclose.id = 'close_button'
+        this.btnclose.title = 'Закрыть'
+        this.btnclose.innerHTML = '<p id="ld"></p><p id="rd"></p>'
+        this.btnclose.addEventListener('click', () => {
+            this.el.classList.remove('show')
+            this.modelblock.classList.remove('show')
+            this.btnclose.classList.remove('show')
+        })
+
+        document.body.append(this.el, this.btnclose)
 
 
         // ---------- блок модели меню ----------
@@ -95,6 +107,7 @@ export class SettingsModule extends Module {
         this.el.classList.add('show')
         setTimeout(() => {
             this.modelblock.classList.add('show')
+            this.btnclose.classList.add('show')
             this.render()
         }, 1000)
     }

@@ -82,3 +82,34 @@ body {
 .model_block.show {
     display: block;
 }
+
+#close_button {
+    position: relative;
+    top: 470px;
+    left: 140px;
+    width: 50px;
+    height: 50px;
+    margin: 0 auto;
+    background: rgb(130, 195, 238);
+    border-radius: 50%;
+    box-shadow: 2px 2px 3px #444;
+    cursor: pointer;
+    display: none;
+}
+
+#ld {
+    position: relative;
+    top: 25px;
+    border-top: solid 1px #fff;
+    transform: rotate(45deg);
+}
+#rd {
+    position: relative;
+    top: 25px;
+    border-top: solid 1px #fff;
+    transform: rotate(-45deg);
+}
+
+#close_button.show {
+    display: block;
+}
