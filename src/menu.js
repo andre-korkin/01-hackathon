@@ -1,10 +1,23 @@
 import {Menu} from './core/menu'
 
+import {SettingsModule} from './modules/settings.module'
+import {ShapeModule} from './modules/shape.module'
+import {ClicksModule} from './modules/clicks.module'
+import {BackgroundModule} from './modules/background.module'
+
 
 export class ContextMenu extends Menu {
     constructor(selector) {
         super(selector)
-        this.items = []
+        this.items = [
+            new SettingsModule('settings', 'Настройка меню'),
+            new ShapeModule('shape', 'Случайная фигура'),
+            new ClicksModule('clicks', 'Подсчет кликов'),
+            new BackgroundModule('background', 'Случайный фон')
+        ]
+
+        this.add()
+        this.clicker()
     }
 
     open(x, y) {
@@ -17,12 +30,10 @@ export class ContextMenu extends Menu {
         this.el.classList.remove('open')
     }
 
-    add(arr) {
-        arr.forEach(item => {
-            this.items.push(item)
+    add() {
+        this.items.forEach(item => {
             this.el.innerHTML += item.toHTML()
         })
-        this.clicker()
     }
 
     clicker() {
