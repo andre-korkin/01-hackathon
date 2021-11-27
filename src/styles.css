@@ -42,3 +42,33 @@ body {
 .menu .menu-item:hover {
     background: rgba(0,0,0,0.2);
 }
+
+/* ---------- Settings module ---------- */
+
+.settings_panel {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: absolute;
+    top: -80px;
+    left: 0;
+    width: 100%;
+    background: rgb(130, 195, 238);
+    border-bottom: solid 1px rgb(39, 130, 190);
+    box-shadow: 0 2px 3px #444;
+    transition: .3s linear;
+}
+
+.settings_panel.show {
+    top: 0;
+}
+
+.settings_panel div {
+    margin: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.settings_panel div input {
+    margin: 10px;
+}
