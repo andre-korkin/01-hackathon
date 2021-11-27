@@ -18,7 +18,7 @@ export class ContextMenu extends Menu {
         this.items = [  // создаем массив пунктов меню
             settings_module,
             new ShapeModule('shape', 'Случайная фигура'),
-            new ClicksModule('clicks', 'Подсчет кликов'),
+            new ClicksModule('clicks', 'Подсчет кликов', 5),
             new BackgroundModule('background', 'Случайный фон')
         ]
 

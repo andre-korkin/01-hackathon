@@ -1,57 +1,78 @@
-import { Module } from '../../core/module'
+import {Module} from '../core/module'
 import styles from './clicks.module.css'
+
 export class ClicksModule extends Module {
-    constructor(totalTime) {
-        super('clicks', 'sadasd')
-        if (!totalTime) {
-            throw new Error('Please specify "totalTime" param')
+    constructor(type, text, timeTotal) { // Длбавляем время для таймера кликов в секундах вызов модуля просиходит по схеме new ClickModule(type, text, seconds)
+        super(type, text)
+        if (!timeTotal) {
+            throw new Error('Please specify "timeTotal" param')
         }
-        this.totalTime = totalTime
+        this.timeTotal = Number(timeTotal) * 100
+        this.text = `${text} за ${this.timeTotal * .01} секунд`
+        this.timer = null
         this.clicksTotal = 0
     }
+
+
+    static getHTML() {
+        return `
+        <div class="${styles.clicks__container}">
+            <div class="${styles.clicks__alert}">
+                <h1 class="${styles.clicks__title}">Идет подсчет "кликов".</h1>
+                <div class="${styles.clicks__timer}">
+                    Осталось <span id="timer">00.00</span> секунд
+                </div>
+            </div>
+        </div>
+       `
+    }
+
+    static getZero(num) {
+       return  (num >= 0 && num < 10) ? '0' + num : num
+    }
+
     countdown() {
-        if (time === 0) {
-            alert(`фсё`)
+        if (this.timeTotal === 0 || !this.timeTotal) {
             this.finish()
         } else {
-            const timer = document.querySelector('#timer')
-            const ss = Math.floor((tt - mi * 60 * 100) / 100)
-            const ms = tt - Math.floor(tt / 100) * 100
-            timer.innerHTML = `${fillZero(ss)}.${fillZero(ms)}`
+            let current = --this.timeTotal
+            const timerHTML = document.querySelector('#timer')
+            const ss = Math.floor(current / 100)
+            const ms = this.timeTotal - Math.floor(current / 100) * 100
+            timerHTML.innerHTML = `${ClicksModule.getZero(ss)}.${ClicksModule.getZero(ms)}`
         }
     }
-    fillZero(num) {
-        return num < 10 ? '0' + num : num
-    }
+
     start() {
-        const container = document.createElement('div')
-        container.classList.add(`${styles.clicks__container}`)
-
-        const alert = document.createElement('div')
-        alert.classList.add(`${styles.clicks__alert}`)
-
-        const alertTitle = document.createElement('h1')
-        alertTitle.classList.add(`${styles.clicks__title}`)
-        alertTitle.innerText = 'Идет подсчет "кликов".'
-
-        const alertTimer = document.createElement('div')
-        alertTimer.classList.add(`${styles.clicks__timer}`)
-        alertTimer.innerHTML = `<p>Осталось <span id="timer">00.00</span> секунд</p>`
-
-        const alertResult = document.createElement('div')
-        alertResult.classList.add(`${styles.clicks__result}`)
-        alert.append(alertTitle, alertTimer, alertResult)
-        // alert.innerHTML = `Осталось ${this.totalTime} секунд`
-        container.append(alert)
-
-        document.body.append(container)
+        if (!this.timer) {
+            this.timer = setInterval(() => this.countdown(), 10)
+            document.body.classList.toggle(`${styles.unselectable}`)
+            const clicksCounter = document.createElement('div')
+            clicksCounter.classList.add(`${styles.clicks__counter}`)
+            clicksCounter.innerHTML = `00`
+            document.querySelector(`.${styles.clicks__container}`).append(clicksCounter)
+        }
     }
+
     finish() {
-        console.log(`<h1>Cчет <span class='primary'>${this.clicksTotal}</span></h1>`)
+        clearInterval(this.timer)
+        document.querySelector(`.${styles.clicks__title}`).innerHTML = `Поздравляем!`
+        document.querySelector(`.${styles.clicks__timer}`).innerHTML = `Вы накликали ${this.clicksTotal} раз(а).`
+        document.querySelector(`.${styles.clicks__counter}`).remove()
+        document.body.classList.toggle(`${styles.unselectable}`)
+        this.timer = null
     }
-    run() {
 
+    trigger() {
+        document.body.innerHTML = ClicksModule.getHTML()
         this.start()
+        document.body.addEventListener('click', (e) => {
+            if (this.timer) {
+                ++this.clicksTotal
+                document.querySelector(`.${styles.clicks__counter}`).innerHTML = `${ClicksModule.getZero(this.clicksTotal)}`
+            }
+        })
     }
-
 }
+
+
