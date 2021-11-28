@@ -12,6 +12,7 @@ body {
     height: 100vh;
     width: 100%;
     padding: 2rem;
+    background: #eee;
 }
 
 .menu {
@@ -112,4 +113,174 @@ body {
 
 #close_button.show {
     display: block;
+}
+
+/* ---------- Message module ---------- */
+ 
+.messageContent {
+    position: absolute;
+    z-index: 100;
+    top: 10px;
+    left: 10px;
+    min-width: 150px;
+    min-height: 20px;
+    background-color: rgba(20, 12, 12, 0.7);
+    border-radius: 8px;
+    color: white;
+    backdrop-filter: blur(10px);  
+    padding: 7px;
+    opacity: 0;
+    transform: scale(0);
+    transform-origin: top left;
+    transition: 200ms;
+}
+ 
+.messageContent.active {
+    opacity: 1;
+    transform: scale(1);
+    transition: transform 200ms ease-in-out;
+    animation-name: anim;
+    animation-duration: 3s;
+    animation-iteration-count: 1; 
+}
+ 
+@keyframes anim {
+    0% {
+        opacity: 1;
+    }
+    10% {
+        opacity: .9;
+    }
+    20% {
+        opacity: .8;
+    }
+    30% {
+        opacity: .7;
+    }
+    40% {
+        opacity: .6;
+    }
+    50% {
+        opacity: .5;
+    }
+    60% {
+        opacity: .4;
+    }
+    70% {
+        opacity: .3;
+    }
+    80% {
+        opacity: .2;
+    }
+    90% {
+        opacity: .1;
+    }
+    100% {
+        opacity: 0;
+    }  
+}
+
+/* ---------- Module clicks --------- */
+
+#app {
+    background: rgba(255,255,255,0.6);
+    padding: 20px;
+    width: 600px;
+    margin: 150px auto;
+    border: solid 1px #444;
+    border-radius: 10px;
+}
+  
+#app_header {
+    padding: 20px;
+    text-align: center;
+}
+  
+h1 {
+    color:#333;
+}
+h1 span {
+    color:#f33;
+}
+ #result {
+    display: none;
+}
+  
+#app_content {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+}
+  
+button {
+    position: absolute;
+    z-index: 1;
+    display: inline-block;
+    padding: 1rem 2.3rem;
+    margin-bottom: 0;
+    font-weight: normal;
+    font-family: GothamPro, sans-serif;
+    font-size: 1rem;
+    line-height: 1.3rem;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    user-select: none;
+    background: #ff8500;
+    color: #fff;
+    border: none;
+    border-radius: 2.8rem;
+    transition: transform .2s ease-in-out,box-shadow .2s ease-in-out,-webkit-transform .2s ease-in-out,-webkit-box-shadow .2s ease-in-out;
+    will-change: transform;
+}
+button:hover {
+    box-shadow: 0 6px 16px 0 rgba(0,0,0,.2);
+    transform: translateY(-1px);
+}
+#newgame {
+    display: none;
+}
+  
+#gamebox {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 150px;
+}
+  
+#app_footer {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+  
+label {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 3px;
+    color: #000;
+    font-family: GothamPro,sans-serif;
+    font-size: .8rem;
+    font-weight: normal;
+    line-height: 1.2rem;
+}
+  
+#set_time {
+    display: block;
+    width: 120px;
+    max-height: 2.8rem;
+    padding: .8rem 1rem;
+    font-size: inherit;
+    font-family: inherit;
+    font-weight: inherit;
+    line-height: 1.4;
+    color: #000;
+    background: #fff none;
+    border: 1px solid #999;
+    border-radius: 5px;
 }
