@@ -1,11 +1,12 @@
 import {Menu} from './core/menu'
-import { hexToRgb } from './utils'
+import {hexToRgb} from './utils'
 
 // -------------- импортируем модули списков меню ---------
 import {SettingsModule} from './modules/settings.module'
 import {ShapeModule} from './modules/shape.module'
 import {ClicksModule} from './modules/clicks.module'
 import {BackgroundModule} from './modules/background.module'
+import {PhotosModule} from "./modules/photos.module";
 
 
 export class ContextMenu extends Menu {
@@ -19,7 +20,8 @@ export class ContextMenu extends Menu {
             settings_module,
             new ShapeModule('shape', 'Случайная фигура'),
             new ClicksModule('clicks', 'Подсчет кликов'),
-            new BackgroundModule('background', 'Случайный фон')
+            new BackgroundModule('background', 'Случайный фон'),
+            new PhotosModule('photos_mars', 'Фото Марса')
         ]
 
         this.add()  // отрисовка пунктов меню
@@ -30,7 +32,7 @@ export class ContextMenu extends Menu {
         const win_width = document.documentElement.clientWidth  // ширина документа
         const win_height = document.documentElement.clientHeight  // высота документа
         const menu_width = 200  // ширина меню
-        const menu_height = 30*this.items.length  // высота меню = общей высоте пунктов меню
+        const menu_height = 30 * this.items.length  // высота меню = общей высоте пунктов меню
         let x = event.clientX  // X-координата курсора
         let y = event.clientY  // Y-координата курсора
 

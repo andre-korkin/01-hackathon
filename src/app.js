@@ -1,9 +1,8 @@
-import './styles.css'
-import {ContextMenu} from './menu'
+import './styles.css';
+import {ContextMenu} from './menu';
 
 
 const context_menu = new ContextMenu('#menu')
-
 const $body = document.querySelector('body')
 $body.addEventListener('contextmenu', (event) => {
     event.preventDefault()

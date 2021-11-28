@@ -19,7 +19,7 @@ body {
     z-index: 1000;
     width: 200px;
     color: #eee;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0, 0, 0, 0.5);
     border-radius: 5px;
     display: none;
     list-style: none;
@@ -40,7 +40,7 @@ body {
 }
 
 .menu .menu-item:hover {
-    background: rgba(0,0,0,0.2);
+    background: rgba(0, 0, 0, 0.2);
 }
 
 /* ---------- Settings module ---------- */
@@ -103,6 +103,7 @@ body {
     border-top: solid 1px #fff;
     transform: rotate(45deg);
 }
+
 #rd {
     position: relative;
     top: 25px;
@@ -112,4 +113,83 @@ body {
 
 #close_button.show {
     display: block;
+}
+
+/* ---------- Click module ---------- */
+
+#count{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: lightgray;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#timer{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: black;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #eeeeee;
+}
+
+.blockResult{
+    background: #eeeeee;
+    border-radius: 10px;
+    box-shadow: 2px 3px 3px #444444;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 150px;
+
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.close{
+    display: none;
+}
+
+/* ---------- Nasa module ---------- */
+
+.container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.blockImage{
+    position: relative;
+    margin: 10px;
+}
+
+.img{
+    width: 200px;
+    height: 200px;
+    transition: all .5s ease-out;
+}
+
+.img:hover{
+    transform: scale(1.2);
+}
+
+.date{
+    position: absolute;
+    top: 180px;
+    left: 10px;
 }
