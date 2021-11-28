@@ -1,5 +1,5 @@
 import {Module} from '../core/module'
-import { hexToRgb } from '../utils'
+import {hexToRgb} from '../utils'
 
 
 export class SettingsModule extends Module {

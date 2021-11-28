@@ -14,3 +14,15 @@ export function hexToRgb(hex) {
     b: parseInt(result[3], 16)
   } : null
 }
+
+
+export function getRandomColor() {
+  const colors = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f']
+  let rnd_color = '#'
+  
+  for(let j=0; j<6; j++) {
+      rnd_color += colors[Math.floor(Math.random() * 16)]
+  }
+
+  return rnd_color
+}
