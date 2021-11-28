@@ -7,7 +7,6 @@ export class ContextMenu extends Menu {
     }
 
     open(posX, posY) {
-        console.log(posX, posY)
         this.el.classList.add('open')
         this.el.style.left = `${posX}px`
         this.el.style.top = `${posY}px`
@@ -30,6 +29,7 @@ export class ContextMenu extends Menu {
             this.modules.map(item=>{
                 if (item.type === typeModule) item.trigger()
             })
+            this.close()
         })
     }
 }

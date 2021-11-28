@@ -10,7 +10,7 @@ import {SoundsModule} from './modules/sounds.module'
 
 const modules = [  // создаем массив пунктов меню
     new ShapeModule('shape', 'Случайная фигура'),
-    new ClicksModule('clicks', 'Подсчет кликов'),
+    new ClicksModule('clicks', 'Подсчет кликов', 5),
     new SoundsModule('sounds', 'Случайный звук'),
     new BackgroundModule('background', 'Случайный фон'),
     new SettingsModule('settings', 'Настройка меню')
@@ -26,3 +26,4 @@ document.body.addEventListener('contextmenu', (event) => {
     const {clientX, clientY} = event
     contextMenu.open(clientX, clientY)
 })
+
