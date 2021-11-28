@@ -6,6 +6,8 @@ import {SettingsModule} from './modules/settings.module'
 import {ShapeModule} from './modules/shape.module'
 import {ClicksModule} from './modules/clicks.module'
 import {BackgroundModule} from './modules/background.module'
+import {MessageModule} from './modules/message.module'
+import {SoundsModule} from './modules/sounds.module'
 
 
 export class ContextMenu extends Menu {
@@ -16,10 +18,12 @@ export class ContextMenu extends Menu {
         this.settings = settings_module.model  // импортируем стили для меню из модуля настройки меню
 
         this.items = [  // создаем массив пунктов меню
-            settings_module,
-            new ShapeModule('shape', 'Случайная фигура'),
             new ClicksModule('clicks', 'Подсчет кликов'),
-            new BackgroundModule('background', 'Случайный фон')
+            new ShapeModule('shape', 'Случайная фигура'),
+            new SoundsModule('sounds', 'Случайный звук'),
+            new BackgroundModule('background', 'Случайный фон'),
+            new MessageModule('message', 'Мотивирующая цитата'),
+            settings_module
         ]
 
         this.add()  // отрисовка пунктов меню
