@@ -9,9 +9,9 @@ export class SettingsModule extends Module {
         this.model = {  // свойства модели меню
             background: '#000000',
             color: '#eeeeee',
-            opacity: '50',
+            opacity: '30',
             radius: '5',
-            shadow: '#444444'
+            shadow: '#000000'
         }
 
         // ---------- панель настроек ----------
