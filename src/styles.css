@@ -120,67 +120,31 @@ body {
 .messageContent {
     position: absolute;
     z-index: 100;
-    top: 10px;
-    left: 10px;
+    top: 20px;
+    left: 20px;
     min-width: 150px;
     min-height: 20px;
-    background-color: rgba(20, 12, 12, 0.7);
-    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.7);
+    box-shadow: 2px 3px 3px #000;
+    border-radius: 5px;
     color: white;
-    backdrop-filter: blur(10px);  
-    padding: 7px;
+    font-weight: 100;
+    padding: 10px 20px;
     opacity: 0;
-    transform: scale(0);
-    transform-origin: top left;
-    transition: 200ms;
+    transition-duration: .5s;
+}
+
+.messageContent div {
+    text-align: right;
+    font-style: italic;
+    margin: 15px 30px 0 0;
 }
  
 .messageContent.active {
-    opacity: 1;
-    transform: scale(1);
-    transition: transform 200ms ease-in-out;
-    animation-name: anim;
-    animation-duration: 3s;
-    animation-iteration-count: 1; 
-}
- 
-@keyframes anim {
-    0% {
-        opacity: 1;
-    }
-    10% {
-        opacity: .9;
-    }
-    20% {
-        opacity: .8;
-    }
-    30% {
-        opacity: .7;
-    }
-    40% {
-        opacity: .6;
-    }
-    50% {
-        opacity: .5;
-    }
-    60% {
-        opacity: .4;
-    }
-    70% {
-        opacity: .3;
-    }
-    80% {
-        opacity: .2;
-    }
-    90% {
-        opacity: .1;
-    }
-    100% {
-        opacity: 0;
-    }  
+    opacity: 1; 
 }
 
-/* ---------- Module clicks --------- */
+/* ---------- Clicks module --------- */
 
 #app {
     background: rgba(255,255,255,0.6);
@@ -283,4 +247,44 @@ label {
     background: #fff none;
     border: 1px solid #999;
     border-radius: 5px;
+}
+
+/* ---------- Timer module --------- */
+
+.timer {
+    position: absolute;
+    z-index: 100;
+    top: 20px;
+    left: 20px;
+    min-width: 150px;
+    min-height: 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+    box-shadow: 2px 3px 3px #000;
+    border-radius: 5px;
+    color: white;
+    font-weight: 100;
+    padding: 20px;
+    text-align: center;
+}
+
+.showTime {
+    color: #fff;
+    font-size: 30px;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+.timer input {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+.timerButton {
+    padding: 10px;
+    width: 150px;
+    background: #ff8500;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 30px auto 10px auto;
 }

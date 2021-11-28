@@ -25,7 +25,7 @@ export class MessageModule extends Module {
         $message.className = 'messageContent'
         $message.classList.add('active')
         const text = this.messages[random(0, 10)]
-        $message.innerHTML = `${text[0]}<span>${text[1]}</span>`
+        $message.innerHTML = `${text[0]}<div>${text[1]}</div>`
         document.body.append($message)
 
         setTimeout(() => $message.classList.remove('active'), 5000);

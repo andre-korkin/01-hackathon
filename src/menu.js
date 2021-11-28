@@ -8,6 +8,7 @@ import {ClicksModule} from './modules/clicks.module'
 import {BackgroundModule} from './modules/background.module'
 import {MessageModule} from './modules/message.module'
 import {SoundsModule} from './modules/sounds.module'
+import {TimerModule} from './modules/timer.module'
 
 
 export class ContextMenu extends Menu {
@@ -23,6 +24,7 @@ export class ContextMenu extends Menu {
             new SoundsModule('sounds', 'Случайный звук'),
             new BackgroundModule('background', 'Случайный фон'),
             new MessageModule('message', 'Мотивирующая цитата'),
+            new TimerModule('timer', 'Таймер отсчета'),
             settings_module
         ]
 
