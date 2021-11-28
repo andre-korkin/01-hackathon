@@ -41,6 +41,7 @@ export class ShapeModule extends Module {
         }
 
         this.shape.style.transform = `rotate(${random(0, 360)}deg)`  // случайный поворот
+        this.shape.addEventListener('click', () => this.shape.remove())
         document.body.append(this.shape)
     }
 
