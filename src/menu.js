@@ -19,13 +19,13 @@ export class ContextMenu extends Menu {
         this.settings = settings_module.model  // импортируем стили для меню из модуля настройки меню
 
         this.items = [  // создаем массив пунктов меню
+            settings_module,
             new ClicksModule('clicks', 'Подсчет кликов'),
             new ShapeModule('shape', 'Случайная фигура'),
             new SoundsModule('sounds', 'Случайный звук'),
             new BackgroundModule('background', 'Случайный фон'),
             new MessageModule('message', 'Мотивирующая цитата'),
-            new TimerModule('timer', 'Таймер отсчета'),
-            settings_module
+            new TimerModule('timer', 'Таймер отсчета')
         ]
 
         this.add()  // отрисовка пунктов меню
